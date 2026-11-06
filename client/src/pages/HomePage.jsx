@@ -1,0 +1,42 @@
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, ShieldCheck, Sparkles } from 'lucide-react'
+import { Button } from '../components/ui/Button'
+import { Card } from '../components/ui/Card'
+import { Container } from '../components/layout/Container'
+import { SectionHeading } from '../components/shared/SectionHeading'
+
+const vehicles = [
+  { name: 'The city runabout', type: 'Hatchback · Automatic', price: '₹1,850', image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=85' },
+  { name: 'The open road', type: 'Motorcycle · Manual', price: '₹950', image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=85' },
+  { name: 'The weekend escape', type: 'SUV · Automatic', price: '₹2,400', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=85' },
+]
+
+const steps = [
+  ['01', 'Choose your way', 'Browse a considered collection of cars and bikes, ready when you are.'],
+  ['02', 'Meet your match', 'Connect directly with a local owner and agree on the details.'],
+  ['03', 'Move freely', 'Pick up, drive out, and make the city yours for a while.'],
+]
+
+export default function HomePage() {
+  return (
+    <>
+      <section className="relative min-h-[720px] overflow-hidden bg-ink text-white">
+        <img className="absolute inset-0 h-full w-full object-cover opacity-55" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=85" alt="Luxury car on an open road" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/50 to-ink/20" />
+        <Container className="relative flex min-h-[720px] items-end pb-20 pt-40 sm:pb-28"><div className="max-w-3xl"><p className="eyebrow text-white/60">A better way to get around</p><h1 className="mt-5 font-serif text-6xl leading-[0.95] tracking-[-0.04em] sm:text-8xl">Move on<br /><span className="text-accent">your own terms.</span></h1><p className="mt-7 max-w-md text-base leading-7 text-white/70 sm:text-lg">Rydlo brings the right vehicle to the right moment. Peer-to-peer rentals, made personal.</p><Button to="/vehicles" className="mt-9">Explore vehicles <ArrowUpRight size={17} className="ml-2" /></Button></div></Container>
+        <div className="absolute bottom-8 right-8 hidden items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/60 sm:flex"><ArrowDown size={16} /> Scroll to explore</div>
+      </section>
+
+      <section className="relative z-10 -mt-10"><Container><Card className="p-5 shadow-soft sm:p-7"><div className="mb-5 flex items-center justify-between"><div><p className="eyebrow">Find your ride</p><p className="mt-1 text-sm text-muted">Demo search experience</p></div><Sparkles className="text-accent" size={20} /></div><div className="grid gap-3 md:grid-cols-[1.3fr_1fr_1fr_auto]"><label className="rounded-2xl border border-line px-4 py-3"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-muted">Location</span><span className="mt-1 block text-sm">Your city <ChevronDown className="float-right mt-0.5 text-muted" size={16} /></span></label><label className="rounded-2xl border border-line px-4 py-3"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-muted">From</span><span className="mt-1 block text-sm">Select date</span></label><label className="rounded-2xl border border-line px-4 py-3"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-muted">To</span><span className="mt-1 block text-sm">Select date</span></label><Button className="rounded-2xl">Search</Button></div></Card></Container></section>
+
+      <section className="py-28 sm:py-36"><Container><div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><SectionHeading eyebrow="The collection" title="Vehicles with a point of view." copy="Every vehicle on Rydlo is owned by someone who cares. Start with our demo collection." /><Button to="/vehicles" variant="ghost">View all vehicles <ArrowUpRight size={16} className="ml-2" /></Button></div><div className="mt-12 grid gap-5 md:grid-cols-3">{vehicles.map((vehicle) => <Card key={vehicle.name} className="overflow-hidden"><img className="h-64 w-full object-cover" src={vehicle.image} alt={vehicle.name} /><div className="p-5"><div className="flex items-start justify-between gap-4"><div><h3 className="font-serif text-2xl">{vehicle.name}</h3><p className="mt-1 text-sm text-muted">{vehicle.type}</p></div><p className="text-right text-sm font-semibold">{vehicle.price}<span className="block text-xs font-normal text-muted">/ day</span></p></div><span className="mt-5 inline-block rounded-full bg-canvas px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-accent">Demo listing</span></div></Card>)}</div></Container></section>
+
+      <section className="border-y border-line bg-white py-28"><Container><SectionHeading eyebrow="Made for your kind of day" title="Pick your pace." /><div className="mt-12 grid gap-5 md:grid-cols-2"><div className="group relative min-h-[420px] overflow-hidden rounded-3xl"><img className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&w=1200&q=85" alt="Motorcycle ready for a city ride" /><div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" /><div className="absolute bottom-7 left-7 text-white"><p className="eyebrow text-white/60">01 / Two wheels</p><h3 className="mt-3 font-serif text-4xl">Bikes</h3><p className="mt-2 text-sm text-white/70">For the long way home.</p></div></div><div className="group relative min-h-[420px] overflow-hidden rounded-3xl"><img className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85" alt="Car on a scenic road" /><div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" /><div className="absolute bottom-7 left-7 text-white"><p className="eyebrow text-white/60">02 / Four wheels</p><h3 className="mt-3 font-serif text-4xl">Cars</h3><p className="mt-2 text-sm text-white/70">For wherever next is.</p></div></div></div></Container></section>
+
+      <section className="py-28 sm:py-36"><Container><SectionHeading eyebrow="The Rydlo way" title="Simple by design." copy="A little less friction. A lot more freedom." /><div className="mt-14 grid gap-10 md:grid-cols-3">{steps.map(([number, title, copy]) => <div key={number} className="border-t border-line pt-5"><span className="text-sm font-bold text-accent">{number}</span><h3 className="mt-12 font-serif text-3xl">{title}</h3><p className="mt-3 text-sm leading-6 text-muted">{copy}</p></div>)}</div></Container></section>
+
+      <section className="bg-ink py-24 text-white sm:py-32"><Container className="grid items-center gap-14 md:grid-cols-[1fr_0.8fr]"><SectionHeading light eyebrow="For vehicle owners" title="Your vehicle has more places to go." copy="Turn the time it sits still into something useful. Rydlo connects you with thoughtful renters in your city." /><div><div className="space-y-4 border-y border-white/15 py-6">{['Set your own availability', 'Meet verified local renters', 'Earn on every successful trip'].map((item) => <div key={item} className="flex items-center gap-3 text-sm text-white/80"><Check className="text-accent" size={17} />{item}</div>)}</div><Button to="/list-your-vehicle" variant="secondary" className="mt-8">List your vehicle <ArrowUpRight size={16} className="ml-2" /></Button></div></Container></section>
+
+      <section className="py-28 sm:py-36"><Container className="grid items-center gap-14 md:grid-cols-[0.9fr_1fr]"><div className="relative"><img className="h-[480px] w-full rounded-3xl object-cover" src="https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=1200&q=85" alt="Driver enjoying a road trip" /><div className="absolute -bottom-6 -right-4 rounded-2xl bg-white p-5 shadow-soft sm:-right-8"><ShieldCheck className="text-accent" size={25} /><p className="mt-3 text-sm font-semibold">Built on trust</p><p className="mt-1 text-xs text-muted">Safety comes first.</p></div></div><SectionHeading eyebrow="Peace of mind, standard" title="Go further with confidence." copy="We are building Rydlo around clear communication, thoughtful owners, and support that is there when you need it." /></Container></section>
+    </>
+  )
+}
